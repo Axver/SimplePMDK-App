@@ -26,7 +26,15 @@ if($rows==1)
         $_SESSION['jenis_user']=$row['jenis_user'];
     }
     
-    header('Location: ../view/admin/admin.php');
+    if($_SESSION['jenis_user']=='admin')
+    {
+        header('Location: ../view/admin/admin.php');
+    }
+    else if($_SESSION['jenis_user']=='siswa')
+    {
+        header('Location: ../view/siswa/siswa.php');
+    }
+    
 }
 else
 {

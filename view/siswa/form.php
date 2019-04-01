@@ -86,7 +86,7 @@ button:hover {
 </style>
 <body>
 
-<form style='color:black;' id="regForm" action="/action_page.php">
+<form style='color:black;' id="regForm" action="../../controller/siswa/biodata.php">
   <h1>Register:</h1>
   <!-- One "tab" for each step in the form: -->
   <div class="tab">Biodata:
@@ -224,7 +224,7 @@ button:hover {
     // echo $rows;
     ?>
     
-    <p><b style='color:black;'>Sekolah Asal:</b><select oninput="this.className = ''" name="sekolah_asal" id="sekolah_asal">
+    <p><b style='color:black;'>Sekolah Asal:</b><select oninput="this.className = ''" name="kode_jurusan" id="kode_jurusan">
     
     <?php 
      while ($row=pg_fetch_assoc($result)) {
