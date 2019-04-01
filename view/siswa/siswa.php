@@ -23,6 +23,13 @@
 
 <body class="index-page">
 
+<?php 
+include 'modal_biodata.php';
+include "modal_prestasi.php";
+include 'modal_upload.php';
+include 'modal_foto.php';
+?>
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="100">
         <div class="container">
@@ -130,12 +137,12 @@
                                 <ul class="navbar-nav">
                                     <li class="nav-item active">
                                         <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">
-                                            <p>Sekolah</p>
+                                            <p>Biodata</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">
-                                            <p>Siswa</p>
+                                        <a class="nav-link" href="#" data-toggle="modal" data-target="#modal_foto">
+                                            <p>Foto</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -223,8 +230,19 @@
 
             <div class='col-sm-4'>
                 <div class="container">
-                    <h4><b>Data Siswa</b></h4>
+                    <h4><b>Menu</b></h4>
                     <div class="row">
+                    
+                   
+                    
+                    <button data-toggle="modal" data-target="#modal_prestasi" class='btn btn-info'>Tambah Prestasi</button>
+                    </br>
+                    
+                   
+                    
+                    <button data-toggle="modal" data-target="#modal_upload" class='btn btn-info'>Upload Foto</button>
+
+                    <button class='btn btn-danger'>Cetak</button>
 
 
 
