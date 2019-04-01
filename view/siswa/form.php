@@ -253,7 +253,7 @@ button:hover {
     </select>
     </p>
   </div>
-  <div class="tab">Pilihan 1:
+  <div class="tab">Pilihan:
     
     <!-- Nama Politeknik -->
     <?php   
@@ -280,11 +280,70 @@ button:hover {
 
     <!-- Prodi  -->
     <p><b style='color:black;'>Prodi:</b>
-    <select oninput="this.className = ''" name="prodi" id="prodi"></select>
+    <select oninput="this.className = ''" name="prodi1" id="prodi"></select>
     </p>
 
+        <!-- Nama Politeknik 2-->
+        <?php   
+    $result = pg_query($conn,"SELECT id_politeknik, nama_politeknik
+    FROM public.daftar_poltek;");
+    $rows = pg_num_rows($result);
+    // echo $rows;
+    ?>
+    
+    <p><b style='color:black;'>Politeknik:</b><select onchange='getProdi2()'oninput="this.className = ''" name="politeknik2" id="politeknik2">
+    <option value="provinsi">---Pilih Politeknik---</option>
+    <?php 
+     while ($row=pg_fetch_assoc($result)) {
+       ?>
+    <option value="<?php echo $row['id_politeknik']?>"><?php echo $row['nama_politeknik']?></option>
+    <?php
+    }
+    
+    ?>
+    
+    
+    </select>
+    </p>
+
+    <!-- Prodi  -->
+    <p><b style='color:black;'>Prodi:</b>
+    <select oninput="this.className = ''" name="prodi2" id="prodi2"></select>
+    </p>
+
+        <!-- Nama Politeknik 3 -->
+        <?php   
+    $result = pg_query($conn,"SELECT id_politeknik, nama_politeknik
+    FROM public.daftar_poltek;");
+    $rows = pg_num_rows($result);
+    // echo $rows;
+    ?>
+    
+    <p><b style='color:black;'>Politeknik:</b><select onchange='getProdi3()'oninput="this.className = ''" name="politeknik3" id="politeknik3">
+    <option value="provinsi">---Pilih Politeknik---</option>
+    <?php 
+     while ($row=pg_fetch_assoc($result)) {
+       ?>
+    <option value="<?php echo $row['id_politeknik']?>"><?php echo $row['nama_politeknik']?></option>
+    <?php
+    }
+    
+    ?>
+    
+    
+    </select>
+    </p>
+
+    <!-- Prodi  -->
+    <p><b style='color:black;'>Prodi:</b>
+    <select oninput="this.className = ''" name="prodi3" id="prodi3"></select>
+    </p>
 
   </div>
+
+
+
+  
   <div style="overflow:auto;">
     <div style="float:right;">
       <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
@@ -432,6 +491,65 @@ function getProdi()
             }
           });
 }
+
+
+function getProdi2()
+{
+  var politeknik=document.getElementById("politeknik").value;
+ console.log(provinsi);
+
+   $.ajax({
+            type: 'GET',
+            url: '../../controller/siswa/prodi.php?id_politeknik=' + politeknik,
+            success: function (html) {
+            //   alert(html);
+              var json=JSON.parse(html);
+              var hapus = document.getElementById("prodi2");
+              $('#prodi2').children().remove().end();
+              i = 1;
+              while (i <= json.features.length) {
+                // alert(i);
+                var x1 = document.getElementById("prodi2");
+                var option1 = document.createElement("option");
+                option1.text = json.features[i].properties['nama_prodi'];
+                option1.value = json.features[i].properties['id_prodi'];
+                x1.add(option1);
+                i++;
+              }
+            }
+          });
+}
+
+
+
+function getProdi3()
+{
+  var politeknik=document.getElementById("politeknik").value;
+ console.log(provinsi);
+
+   $.ajax({
+            type: 'GET',
+            url: '../../controller/siswa/prodi.php?id_politeknik=' + politeknik,
+            success: function (html) {
+            //   alert(html);
+              var json=JSON.parse(html);
+              var hapus = document.getElementById("prodi3");
+              $('#prodi3').children().remove().end();
+              i = 1;
+              while (i <= json.features.length) {
+                // alert(i);
+                var x1 = document.getElementById("prodi3");
+                var option1 = document.createElement("option");
+                option1.text = json.features[i].properties['nama_prodi'];
+                option1.value = json.features[i].properties['id_prodi'];
+                x1.add(option1);
+                i++;
+              }
+            }
+          });
+}
+
+
 
 
     // PHP Ajax Show Kabupaten
