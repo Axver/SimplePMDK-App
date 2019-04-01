@@ -150,6 +150,7 @@ include 'modal_foto.php';
                                             <p>Politeknik</p>
                                         </a>
                                     </li>
+                                    <a href="cetak1.php" target="_BLANK">TES PRINT</a>
                                 </ul>
                             </div>
                         </div>
@@ -242,8 +243,15 @@ include 'modal_foto.php';
                     
                     <button data-toggle="modal" data-target="#modal_upload" class='btn btn-info'>Upload Foto</button>
 
-                    <button class='btn btn-danger'>Cetak</button>
-
+                    <button class='btn btn-danger' onclick='redirect()'>Cetak</button>
+                    <script>
+                    
+                    function redirect()
+                    {
+                        window.location="cetak1.php";
+                    }
+                    
+                    </script>
 
 
 
