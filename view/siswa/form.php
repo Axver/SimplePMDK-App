@@ -124,7 +124,7 @@ button:hover {
     // echo $rows;
     ?>
     
-    <p><b style='color:black;'>Provinsi:</b><select onchange='getKabupaten()'oninput="this.className = ''" name="bidikmisi" id="provinsi">
+    <p><b style='color:black;'>Provinsi:</b><select onchange='getKabupaten()'oninput="this.className = ''" name="provinsi" id="provinsi">
     <option value="provinsi">---Pilih Provinsi---</option>
     <?php 
      while ($row=pg_fetch_assoc($result)) {
@@ -140,18 +140,150 @@ button:hover {
     </p>
 
     <p><b style='color:black;'>Kabupaten:</b>
-    <select name="" id="kabupaten"></select>
+    <select oninput="this.className = ''" name="kabupaten" id="kabupaten"></select>
+    </p>
+
+    <!-- Jenis Kelamin -->
+    <?php   
+    $result = pg_query($conn,"SELECT id_jk, jenis_kelamin
+    FROM public.jenis_kelamin;");
+    $rows = pg_num_rows($result);
+    // echo $rows;
+    ?>
+    
+    <p><b style='color:black;'>Jenis Kelamin:</b><select oninput="this.className = ''" name="jenis_kelamin" id="jenis_kelamin">
+    
+    <?php 
+     while ($row=pg_fetch_assoc($result)) {
+       ?>
+    <option value="<?php echo $row['id_jk']?>"><?php echo $row['jenis_kelamin']?></option>
+    <?php
+    }
+    
+    ?>
+    
+    
+    </select>
+    </p>
+
+
+    <!-- Agama -->
+    <?php   
+    $result = pg_query($conn,"SELECT id_agama, agama
+    FROM public.agama;");
+    $rows = pg_num_rows($result);
+    // echo $rows;
+    ?>
+    
+    <p><b style='color:black;'>Jenis Kelamin:</b><select oninput="this.className = ''" name="agama" id="agama">
+    
+    <?php 
+     while ($row=pg_fetch_assoc($result)) {
+       ?>
+    <option value="<?php echo $row['id_agama']?>"><?php echo $row['agama']?></option>
+    <?php
+    }
+    
+    ?>
+    
+    
+    </select>
     </p>
 
   </div>
-  <div class="tab">Birthday:
-    <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
-    <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
-    <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+  <div class="tab">Sekolah:
+     <!-- Sekolah Asal -->
+     <?php   
+    $result = pg_query($conn,"SELECT npsn, username, nama_sekolah, alamat_sekolah
+    FROM public.sekolah;");
+    $rows = pg_num_rows($result);
+    // echo $rows;
+    ?>
+    
+    <p><b style='color:black;'>Sekolah Asal:</b><select oninput="this.className = ''" name="sekolah_asal" id="sekolah_asal">
+    
+    <?php 
+     while ($row=pg_fetch_assoc($result)) {
+       ?>
+    <option value="<?php echo $row['npsn']?>"><?php echo $row['nama_sekolah']?></option>
+    <?php
+    }
+    
+    ?>
+    
+    
+    </select>
+    </p>
+    
+
+        <!-- Asal Jurusan -->
+        <?php   
+    $result = pg_query($conn,"SELECT kode_jurusan, nama_jurusan
+    FROM public.asal_jurusan;");
+    $rows = pg_num_rows($result);
+    // echo $rows;
+    ?>
+    
+    <p><b style='color:black;'>Sekolah Asal:</b><select oninput="this.className = ''" name="sekolah_asal" id="sekolah_asal">
+    
+    <?php 
+     while ($row=pg_fetch_assoc($result)) {
+       ?>
+    <option value="<?php echo $row['kode_jurusan']?>"><?php echo $row['nama_jurusan']?></option>
+    <?php
+    }
+    
+    ?>
+    
+    
+    </select>
+    </p>
+   
+        <!-- Akselerasi -->
+      
+    
+    <p><b style='color:black;'>Akselerasi:</b><select oninput="this.className = ''" name="akselerasi" id="akselerasi">
+    
+    <option value="Iya">Iya</option>
+    <option value="Tidak">Tidak</option>
+
+    
+    
+    
+    </select>
+    </p>
   </div>
-  <div class="tab">Login Info:
-    <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>
-    <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
+  <div class="tab">Pilihan 1:
+    
+    <!-- Nama Politeknik -->
+    <?php   
+    $result = pg_query($conn,"SELECT id_politeknik, nama_politeknik
+    FROM public.daftar_poltek;");
+    $rows = pg_num_rows($result);
+    // echo $rows;
+    ?>
+    
+    <p><b style='color:black;'>Politeknik:</b><select onchange='getProdi()'oninput="this.className = ''" name="politeknik" id="politeknik">
+    <option value="provinsi">---Pilih Politeknik---</option>
+    <?php 
+     while ($row=pg_fetch_assoc($result)) {
+       ?>
+    <option value="<?php echo $row['id_politeknik']?>"><?php echo $row['nama_politeknik']?></option>
+    <?php
+    }
+    
+    ?>
+    
+    
+    </select>
+    </p>
+
+    <!-- Prodi  -->
+    <p><b style='color:black;'>Prodi:</b>
+    <select oninput="this.className = ''" name="prodi" id="prodi"></select>
+    </p>
+
+
   </div>
   <div style="overflow:auto;">
     <div style="float:right;">
@@ -272,6 +404,33 @@ function getKabupaten()
             }
           });
 
+}
+
+function getProdi()
+{
+  var politeknik=document.getElementById("politeknik").value;
+ console.log(provinsi);
+
+   $.ajax({
+            type: 'GET',
+            url: '../../controller/siswa/prodi.php?id_politeknik=' + politeknik,
+            success: function (html) {
+            //   alert(html);
+              var json=JSON.parse(html);
+              var hapus = document.getElementById("prodi");
+              $('#prodi').children().remove().end();
+              i = 1;
+              while (i <= json.features.length) {
+                // alert(i);
+                var x1 = document.getElementById("prodi");
+                var option1 = document.createElement("option");
+                option1.text = json.features[i].properties['nama_prodi'];
+                option1.value = json.features[i].properties['id_prodi'];
+                x1.add(option1);
+                i++;
+              }
+            }
+          });
 }
 
 
