@@ -108,6 +108,249 @@ while ($row=pg_fetch_assoc($result)) {
 <div class='col-sm-1'></div>
 </div>
 
+<div class='row'>
+<div class='col-sm-2'></div>
+<div class='col-sm-7'>
+
+
+<h3>Data Rapor:</h3>
+
+<?php
+
+
+$nilai=pg_query($conn,"SELECT  daftar_mapel.nama_mapel as nama_mapel, nilai_mapel,semester.peringkat as peringkat,nilai_semester.semester as semester
+FROM public.nilai_semester INNER JOIN semester ON nilai_semester.nisn=semester.nisn
+AND nilai_semester.semester=semester.semester AND nilai_semester.thn_pendaftaran=semester.thn_pendaftaran
+INNER JOIN daftar_mapel ON nilai_semester.kode_mapel=daftar_mapel.kode_mapel 
+INNER JOIN biodata ON semester.nisn=biodata.nisn AND semester.thn_pendaftaran=biodata.thn_pendaftaran 
+WHERE nilai_semester.semester=1 AND username='$username';");
+
+echo"Semester 1:";
+while ($row=pg_fetch_assoc($nilai)) {
+
+    echo "[".$row['nama_mapel']." :".$row['nilai_mapel']."]"." ";
+}
+
+$rata=pg_query($conn,"SELECT  AVG(nilai_mapel)
+FROM public.nilai_semester INNER JOIN biodata ON nilai_semester.nisn=biodata.nisn AND 
+nilai_semester.thn_pendaftaran=biodata.thn_pendaftaran WHERE semester=1 AND username='$username';");
+
+while ($row=pg_fetch_assoc($rata)) {
+
+    echo "Rata-Rata:".$row['avg']. " ";
+}
+
+$peringkat=pg_query($conn,"SELECT MAX(peringkat)
+FROM public.semester
+INNER JOIN biodata ON semester.nisn=biodata.nisn AND semester.thn_pendaftaran=biodata.thn_pendaftaran
+WHERE semester=1 AND username='$username';");
+
+while ($row=pg_fetch_assoc($peringkat)) {
+
+    echo "Peringkat:".$row['max']. " ";
+}
+
+
+echo "<br/>";
+
+
+
+
+
+$nilai=pg_query($conn,"SELECT  daftar_mapel.nama_mapel as nama_mapel, nilai_mapel,semester.peringkat as peringkat,nilai_semester.semester as semester
+FROM public.nilai_semester INNER JOIN semester ON nilai_semester.nisn=semester.nisn
+AND nilai_semester.semester=semester.semester AND nilai_semester.thn_pendaftaran=semester.thn_pendaftaran
+INNER JOIN daftar_mapel ON nilai_semester.kode_mapel=daftar_mapel.kode_mapel 
+INNER JOIN biodata ON semester.nisn=biodata.nisn AND semester.thn_pendaftaran=biodata.thn_pendaftaran 
+WHERE nilai_semester.semester=2 AND username='$username';");
+
+echo"Semester 2:";
+while ($row=pg_fetch_assoc($nilai)) {
+
+    echo "[".$row['nama_mapel']." :".$row['nilai_mapel']."]"." ";
+}
+
+$rata=pg_query($conn,"SELECT  AVG(nilai_mapel)
+FROM public.nilai_semester INNER JOIN biodata ON nilai_semester.nisn=biodata.nisn AND 
+nilai_semester.thn_pendaftaran=biodata.thn_pendaftaran WHERE semester=2 AND username='$username';");
+
+while ($row=pg_fetch_assoc($rata)) {
+
+    echo "Rata-Rata:".$row['avg']. " ";
+}
+
+$peringkat=pg_query($conn,"SELECT MAX(peringkat)
+FROM public.semester
+INNER JOIN biodata ON semester.nisn=biodata.nisn AND semester.thn_pendaftaran=biodata.thn_pendaftaran
+WHERE semester=2 AND username='$username';");
+
+while ($row=pg_fetch_assoc($peringkat)) {
+
+    echo "Peringkat:".$row['max']. " ";
+}
+
+
+echo "<br/>";
+
+
+
+
+$nilai=pg_query($conn,"SELECT  daftar_mapel.nama_mapel as nama_mapel, nilai_mapel,semester.peringkat as peringkat,nilai_semester.semester as semester
+FROM public.nilai_semester INNER JOIN semester ON nilai_semester.nisn=semester.nisn
+AND nilai_semester.semester=semester.semester AND nilai_semester.thn_pendaftaran=semester.thn_pendaftaran
+INNER JOIN daftar_mapel ON nilai_semester.kode_mapel=daftar_mapel.kode_mapel 
+INNER JOIN biodata ON semester.nisn=biodata.nisn AND semester.thn_pendaftaran=biodata.thn_pendaftaran 
+WHERE nilai_semester.semester=3 AND username='$username';");
+
+echo"Semester 5:";
+while ($row=pg_fetch_assoc($nilai)) {
+
+    echo "[".$row['nama_mapel']." :".$row['nilai_mapel']."]"." ";
+}
+
+$rata=pg_query($conn,"SELECT  AVG(nilai_mapel)
+FROM public.nilai_semester INNER JOIN biodata ON nilai_semester.nisn=biodata.nisn AND 
+nilai_semester.thn_pendaftaran=biodata.thn_pendaftaran WHERE semester=3 AND username='$username';");
+
+while ($row=pg_fetch_assoc($rata)) {
+
+    echo "Rata-Rata:".$row['avg']. " ";
+}
+
+$peringkat=pg_query($conn,"SELECT MAX(peringkat)
+FROM public.semester
+INNER JOIN biodata ON semester.nisn=biodata.nisn AND semester.thn_pendaftaran=biodata.thn_pendaftaran
+WHERE semester=3 AND username='$username';");
+
+while ($row=pg_fetch_assoc($peringkat)) {
+
+    echo "Peringkat:".$row['max']. " ";
+}
+
+
+echo "<br/>";
+
+
+
+
+$nilai=pg_query($conn,"SELECT  daftar_mapel.nama_mapel as nama_mapel, nilai_mapel,semester.peringkat as peringkat,nilai_semester.semester as semester
+FROM public.nilai_semester INNER JOIN semester ON nilai_semester.nisn=semester.nisn
+AND nilai_semester.semester=semester.semester AND nilai_semester.thn_pendaftaran=semester.thn_pendaftaran
+INNER JOIN daftar_mapel ON nilai_semester.kode_mapel=daftar_mapel.kode_mapel 
+INNER JOIN biodata ON semester.nisn=biodata.nisn AND semester.thn_pendaftaran=biodata.thn_pendaftaran 
+WHERE nilai_semester.semester=4 AND username='$username';");
+
+echo"Semester 5:";
+while ($row=pg_fetch_assoc($nilai)) {
+
+    echo "[".$row['nama_mapel']." :".$row['nilai_mapel']."]"." ";
+}
+
+$rata=pg_query($conn,"SELECT  AVG(nilai_mapel)
+FROM public.nilai_semester INNER JOIN biodata ON nilai_semester.nisn=biodata.nisn AND 
+nilai_semester.thn_pendaftaran=biodata.thn_pendaftaran WHERE semester=4 AND username='$username';");
+
+while ($row=pg_fetch_assoc($rata)) {
+
+    echo "Rata-Rata:".$row['avg']. " ";
+}
+
+$peringkat=pg_query($conn,"SELECT MAX(peringkat)
+FROM public.semester
+INNER JOIN biodata ON semester.nisn=biodata.nisn AND semester.thn_pendaftaran=biodata.thn_pendaftaran
+WHERE semester=4 AND username='$username';");
+
+while ($row=pg_fetch_assoc($peringkat)) {
+
+    echo "Peringkat:".$row['max']. " ";
+}
+
+
+echo "<br/>";
+
+
+
+$nilai=pg_query($conn,"SELECT  daftar_mapel.nama_mapel as nama_mapel, nilai_mapel,semester.peringkat as peringkat,nilai_semester.semester as semester
+FROM public.nilai_semester INNER JOIN semester ON nilai_semester.nisn=semester.nisn
+AND nilai_semester.semester=semester.semester AND nilai_semester.thn_pendaftaran=semester.thn_pendaftaran
+INNER JOIN daftar_mapel ON nilai_semester.kode_mapel=daftar_mapel.kode_mapel 
+INNER JOIN biodata ON semester.nisn=biodata.nisn AND semester.thn_pendaftaran=biodata.thn_pendaftaran 
+WHERE nilai_semester.semester=5 AND username='$username';");
+
+echo"Semester 5:";
+while ($row=pg_fetch_assoc($nilai)) {
+
+    echo "[".$row['nama_mapel']." :".$row['nilai_mapel']."]"." ";
+}
+
+$rata=pg_query($conn,"SELECT  AVG(nilai_mapel)
+FROM public.nilai_semester INNER JOIN biodata ON nilai_semester.nisn=biodata.nisn AND 
+nilai_semester.thn_pendaftaran=biodata.thn_pendaftaran WHERE semester=1 AND username='$username';");
+
+while ($row=pg_fetch_assoc($rata)) {
+
+    echo "Rata-Rata:".$row['avg']. " ";
+}
+
+$peringkat=pg_query($conn,"SELECT MAX(peringkat)
+FROM public.semester
+INNER JOIN biodata ON semester.nisn=biodata.nisn AND semester.thn_pendaftaran=biodata.thn_pendaftaran
+WHERE semester=5 AND username='$username';");
+
+while ($row=pg_fetch_assoc($peringkat)) {
+
+    echo "Peringkat:".$row['max']. " ";
+}
+
+
+echo "<br/>";
+
+
+
+?>
+
+<h3>Daftar Prestasi:</h3>
+
+<?php
+
+$prestasi=pg_query($conn,"SELECT id_prestasi, nama_prestasi, skala, jenis, juara, tahun
+FROM public.prestasi INNER JOIN biodata ON prestasi.nisn=biodata.nisn AND prestasi.thn_pendaftaran=biodata.thn_pendaftaran
+WHERE username='$username';");
+
+while ($row=pg_fetch_assoc($prestasi)) {
+
+    echo "Nama Prestasi:".$row['nama_prestasi']. "   ";
+    echo "Skala:".$row['skala']. "   ";
+    echo "Juara:".$row['juara']. "   ";
+    echo "Jenis:".$row['jenis']. "   ";
+    echo "Tahun:".$row['tahun']. " <br/>  ";
+}
+
+?>
+
+
+<h3>Pilihan:</h3>
+
+<?php
+
+$pilihan=pg_query($conn,"SELECT pilihan,nama_prodi,nama_politeknik
+FROM public.pilihan_ INNER JOIN prodi ON pilihan_.id_prodi=prodi.id_prodi
+INNER JOIN daftar_poltek ON prodi.id_politeknik=daftar_poltek.id_politeknik
+INNER JOIN biodata ON pilihan_.nisn=biodata.nisn AND pilihan_.thn_pendaftaran=biodata.thn_pendaftaran WHERE username='$username';");
+
+while ($row=pg_fetch_assoc($pilihan)) {
+
+    echo "Pilihan:".$row['pilihan']. "   ";
+    echo "Nama Prodi:".$row['nama_prodi']. "   ";
+    echo "Nama Politeknik:".$row['nama_politeknik']. " <br/>";
+}
+
+?>
+
+
+</div>
+</div>
+
 
 <script>
 		// window.print();
