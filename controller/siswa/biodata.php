@@ -38,8 +38,8 @@ if($ketemu>=1)
 }
 
 $result = pg_query($conn,"INSERT INTO public.biodata(
-	nisn, no_pendaftaran, thn_pendaftaran, id_status_bm, kode_jurusan, username, npsn, id_jk, id_kabupaten, id_agama, nama, asal_jurusan, akselerasi, ttl, alamat, asal_sekolah)
-	VALUES ('$nisn', $no_pendaftaran, $tahun, $bidikmisi, $kode_jurusan, '$username', '$sekolah_asal', $jenis_kelamin, $kabupaten, $agama, '$nama', $kode_jurusan, '$akselerasi', '$ttl', 'alamat', '$sekolah_asal');");
+	nisn, no_pendaftaran, thn_pendaftaran, id_status_bm, kode_jurusan, username, npsn, id_jk, id_kabupaten, id_agama, nama, asal_jurusan, akselerasi, ttl, alamat)
+	VALUES ('$nisn', $no_pendaftaran, $tahun, $bidikmisi, $kode_jurusan, '$username', '$sekolah_asal', $jenis_kelamin, $kabupaten, $agama, '$nama', $kode_jurusan, '$akselerasi', '$ttl', 'alamat');");
 
 
 
@@ -57,5 +57,5 @@ $pil1=pg_query($conn,"INSERT INTO public.pilihan_(
 $pil1=pg_query($conn,"INSERT INTO public.pilihan_(
 	pilihan, nisn, thn_pendaftaran, id_prodi)
     VALUES (3, '$nisn', $tahun, $prodi3);");
-// header('Location: ../../view/siswa/siswa.php');
+header('Location: ../../view/siswa/siswa.php');
 ?>

@@ -28,6 +28,8 @@ include 'modal_biodata.php';
 include "modal_prestasi.php";
 include 'modal_upload.php';
 include 'modal_foto.php';
+include 'modal_nilai.php';
+include 'modal_peringkat.php';
 ?>
 
     <!-- Navbar -->
@@ -244,6 +246,9 @@ include 'modal_foto.php';
                     <button data-toggle="modal" data-target="#modal_upload" class='btn btn-info'>Upload Foto</button>
 
                     <button class='btn btn-danger' onclick='redirect()'>Cetak</button>
+                    <button class='btn btn-danger' data-toggle="modal" data-target="#modal_peringkat" >Peringkat</button>
+                    <button class='btn btn-danger' data-toggle="modal" data-target="#modal_nilai" >Nilai</button>
+                    
                     <script>
                     
                     function redirect()

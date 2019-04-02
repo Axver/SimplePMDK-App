@@ -10,7 +10,7 @@ $peringkat=$_GET['peringkat'];
 $tahun_prestasi=$_GET['tahun'];
 $username=$_SESSION['username'];
 
-$result = pg_query($conn,"SELECT nisn, thn_pendaftaran, id_status_bm, kode_jurusan, username, npsn, id_jk, id_kabupaten, id_agama, nama, asal_jurusan, akselerasi, ttl, alamat, asal_sekolah, no_pendaftaran
+$result = pg_query($conn,"SELECT nisn, thn_pendaftaran, id_status_bm, kode_jurusan, username, npsn, id_jk, id_kabupaten, id_agama, nama, asal_jurusan, akselerasi, ttl, alamat, no_pendaftaran
 FROM public.biodata WHERE username='$username';");
 //  $rows = pg_num_rows($result);
 
