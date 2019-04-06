@@ -55,7 +55,9 @@
 
 <div class='row'>
 <div class='col-sm-1'></div>
-<div class='col-sm-10' style='text-align:center;'><b>BUKTI Pendaftaran PMDK Tahun 2019</b></div>
+<div class='col-sm-10' style='text-align:center;'><b>BUKTI Pendaftaran PMDK Tahun 
+<?php $getdate=getdate();
+$tahun_s=$getdate['year']; echo $tahun_s; ?></b></div>
 <div class='col-sm-1'></div>
 </div>
 

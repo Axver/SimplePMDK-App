@@ -1,3 +1,9 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -140,18 +146,84 @@ include 'modal_tambahsiswa.php';
                       </li>
                     </ul>
                   </div>
+                  
                 </div>
               </nav>
             </div>
             
           </div>
- 
+
+          <div class='row'>
+          <div class='col-sm-6'>
+          <br>
+          <table>
+          <th>Username</th>
+          <th>Created BY</th>
+          <th>Informasi</th>
+          <th>Edit</th>
+          <th>Delete</th>
+          <?php
+          include 'tabel_siswa.php';
+          ?>
+          </table>
+          </div>
+
+          <div class='col-sm-6'>
+          <h3>Cari Username</h3>
+          <input type="text" id='cari_nama' name='cari_nama'>
+          <input class='btn btn-normal' onclick='cari_nama()' type="submit" value='cari'>
+          <p id='p'></p>
+          </div>
+          </div>
+
+         
+    
+         
 
               </div>
               
           </div>
+   
+       
      
+           <script>
+          function cari_nama()
+          {
+            var nama = document.getElementById('cari_nama').value;
+                    if (nama) {
+                        $.ajax({
+                            type: 'GET',
+                            url: '../../controller/sekolah/cari_nama.php?nama=' + nama,
+                            success: function (html) {
+                                  // alert(html);
+                                  // alert(html.user[0].username);
+                                  console.log(html);
+                                  if(html.status=="Data Tidak Ditemukan")
+                                  {
+                                    alert("Data Tidak Ditemukan");
+                                  }
+                                  var paragraph = document.getElementById("p");
+                                 
+                                  var text = document.createTextNode("Username:  "+html.user[0].username+"--------");
+                                  var text2 = document.createTextNode("Password:  "+html.user[0].password);
+                                  
+                                  paragraph.appendChild(text);
+                                  paragraph.appendChild(text2);
+                            }
+                        });
+                    } else {
+                      // alert("Data Tidak Ditemukan");
+                    }
+               
+            
+          }
+
+
+       
+                
+            
            
+           </script>
      
      
      
