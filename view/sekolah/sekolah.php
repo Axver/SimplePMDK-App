@@ -1,24 +1,3 @@
-<?php
-
-session_start();
-if(isset($_SESSION['username']))
-{
-  if($_SESSION['jenis_user']=='admin')
-  {
-
-  }
-  else
-  {
-    header("Location:../welcome.php");
-  }
-}
-else
-{
-  header("Location:../welcome.php"); 
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,7 +22,14 @@ else
 </head>
 
 <body class="index-page">
-    <?php include "modal_sekolah.php"; ?>
+
+<?php
+
+include 'modal_informasi.php';
+include 'modal_tambahsiswa.php';
+
+?>
+    
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="100">
     <div class="container">
@@ -138,18 +124,18 @@ else
                   <div class="collapse navbar-collapse" id="example-navbar">
                     <ul class="navbar-nav">
                       <li class="nav-item active">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">
-                          <p>Sekolah</p>
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#modal_informasi">
+                          <p>Informasi</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#modal_tambahsiswa">
+                          <p>Tambah Siswa</p>
                         </a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link" href="#">
-                          <p>Siswa</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#">
-                          <p>Politeknik</p>
+                          <p>Kelulusan</p>
                         </a>
                       </li>
                     </ul>
@@ -157,123 +143,10 @@ else
                 </div>
               </nav>
             </div>
-            <div class="col-md-6">
-              <h4>Menu with Icons</h4>
-              <nav class="navbar navbar-expand-lg bg-info">
-                <div class="container">
-                  <a class="navbar-brand" href="#">Icons</a>
-                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#example-navbar-icons" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-bar bar1"></span>
-                    <span class="navbar-toggler-bar bar2"></span>
-                    <span class="navbar-toggler-bar bar3"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="example-navbar-icons">
-                    <ul class="navbar-nav ml-auto">
-                      <li class="nav-item">
-                        <a class="nav-link" href="#pablo"><i class="tim-icons icon-send" aria-hidden="true"></i></a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#pablo"><i class="tim-icons icon-single-02" aria-hidden="true"></i></a>
-                      </li>
-                      <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown">
-                          <i class="tim-icons icon-settings-gear-63" aria-hidden="true"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                          <a class="dropdown-header">Dropdown header</a>
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                          <div class="divider"></div>
-                          <a class="dropdown-item" href="#">Separated link</a>
-                          <div class="divider"></div>
-                          <a class="dropdown-item" href="#">One more separated link</a>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </nav>
-            </div>
+            
           </div>
-          <h3 class="title mb-3">Data User</h3>
-        </div>
-        
-          <!-- Tabel User Sekolah -->
-          <div class='row'>
-              <div class='col-sm-1'></div>
-              <div class='col-sm-4'>
-              
-              <div class="container">
-                  <h4><b>Data Sekolah</b></h4>
-    <div class="row">
-     
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              
-              <th>NPSN</th>
-              <th>Nama Sekolah</th>
-              <th>Informasi</th>
-              <th>Edit</th>
-              <th>Delete</th>
+ 
 
-            </tr>
-          </thead>
-          <tbody id="myTable">
-            <?php 
-            include 'tabel_sekolah.php';
-            ?>
-          </tbody>
-        </table>  
-        
-        <button class='btn btn-info'>Show All</button>
-
-        
-      
-     
-	</div>
-</div>
-<h4><b>Cari Data</b></h4>
-<input class="form-control" type="text">
-<input class="form-control" type="button" class='btn btn-warning' value="Cari Nama">
-              </div>
-
-              <div class='col-sm-2'>
-
-              </div>
-
-              <div class='col-sm-4'>
-              <div class="container">
-              <h4><b>Data Siswa</b></h4>
-    <div class="row">
-     
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              
-              <th>Username</th>
-              <th>Created By</th>
-              <th>Informasi</th>
-              <th>Edit</th>
-              <th>Delete</th>
-
-            </tr>
-          </thead>
-          <tbody id="myTable">
-            <?php 
-            include 'tabel_siswa.php';
-            ?>
-          </tbody>
-        </table>   
-        <button class='btn btn-info'>Show All</button>
-      
-     
-	</div>
-</div>
-<h4><b>Cari Data</b></h4>
-<input class="form-control" type="text">
-<input class="form-control" type="button" class='btn btn-warning' value="Cari Nama">
               </div>
               
           </div>

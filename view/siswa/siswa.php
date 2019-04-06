@@ -1,3 +1,16 @@
+<?php
+session_start();
+if(isset($_SESSION['jenis_user']))
+{
+    if($_SESSION['jenis_user']!='siswa')
+    {
+        header("Location:../welcome.php");
+    }
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -108,8 +121,7 @@ include 'modal_peringkat.php';
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-default d-none d-lg-block" href="javascript:void(0)"
-                            onclick="scrollToDownload()">
+                        <a class="nav-link btn btn-default d-none d-lg-block" href="../../controller/logout.php">
                             <i class="tim-icons icon-cloud-download-93"></i> Logout
                         </a>
                     </li>

@@ -34,7 +34,14 @@ if($rows==1)
     {
         header('Location: ../view/siswa/siswa.php');
     }
-    
+    else if($_SESSION['jenis_user']=='sekolah')
+    {
+        header('Location: ../view/sekolah/sekolah.php');
+    }
+    else
+    {
+        session_destroy();
+    }
 }
 else
 {
