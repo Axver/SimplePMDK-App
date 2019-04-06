@@ -90,7 +90,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link btn btn-default d-none d-lg-block" href="javascript:void(0)" onclick="scrollToDownload()">
+            <a class="nav-link btn btn-default d-none d-lg-block" href="../../controller/logout.php">
               <i class="tim-icons icon-cloud-download-93"></i> Logout
             </a>
           </li>

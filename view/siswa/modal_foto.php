@@ -9,13 +9,18 @@
       </div>
       <div class="modal-body">
       <?php
+      session_start();
+      $username=$_SESSION['username'];
       include '../../controller/connect.php';
       $foto=pg_query($conn,"SELECT image
-      FROM public.biodata;");
+      FROM public.biodata WHERE username='$username';");
 
  while ($row=pg_fetch_assoc($foto)) {
  $image=$row['image'];
- }
+ 
+}
+
+ 
 
       ?>
 
