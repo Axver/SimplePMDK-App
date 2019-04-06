@@ -79,7 +79,8 @@ INNER JOIN jenis_kelamin ON biodata.id_jk=jenis_kelamin.id_jk INNER JOIN kabupat
 INNER JOIN provinsi ON kabupaten.id_provinsi=provinsi.id_provinsi INNER JOIN sekolah ON biodata.npsn=sekolah.npsn
 INNER JOIN status_bidikmisi ON biodata.id_status_bm=status_bidikmisi.id_status_bm WHERE biodata.username='$username';");
 // $rows = pg_num_rows($result);
-
+$nama=null;
+$kepala_sekolah=null;
 while ($row=pg_fetch_assoc($result)) {
     $image=$row['image'];
     $nama=$row['nama'];
@@ -141,13 +142,18 @@ while ($i<=$max)
     WHERE username='$username' AND nilai_semester.semester=$i;");
 echo "<br/>";
 echo"Semester"."  $i";
+$peringkat=null;
 
 while ($row=pg_fetch_assoc($nilai)) {
 
     echo "[".$row['nama_mapel']." :".$row['nilai_mapel']."]"." ";
     $peringkat=$row['peringkat'];
 }
-     echo "[Peringkat: ".$peringkat."]";
+    if($peringkat!=null)
+    {
+        echo "[Peringkat: ".$peringkat."]";
+    } 
+    
      $i++;
 }
 
@@ -213,7 +219,9 @@ while ($row=pg_fetch_assoc($pilihan)) {
 <br>
 
 <?php
-echo $nama;
+if ($nama!=null) {
+    echo $nama;
+}
 ?>
 </div>
 
@@ -222,7 +230,11 @@ echo $nama;
 Mengetahui Kepala Sekolah,
 <br><br><br>
 <?php
-echo $kepala_sekolah;
+if($kepala_sekolah!=null)
+{
+
+    echo $kepala_sekolah;
+}
 ?>
 </div>
 

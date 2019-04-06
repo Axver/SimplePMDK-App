@@ -43,7 +43,11 @@ else
 </head>
 
 <body class="index-page">
-    <?php include "modal_sekolah.php"; ?>
+    <?php 
+    include "modal_sekolah.php";
+    include 'modal_politeknik.php';
+    include "modal_prodi.php";
+    ?>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="100">
     <div class="container">
@@ -143,13 +147,13 @@ else
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#">
-                          <p>Siswa</p>
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#modal_politeknik">
+                          <p>Politeknik</p>
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#">
-                          <p>Politeknik</p>
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#modal_prodi">
+                          <p>Prodi</p>
                         </a>
                       </li>
                     </ul>
