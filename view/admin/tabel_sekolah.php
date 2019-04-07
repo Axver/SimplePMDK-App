@@ -9,7 +9,7 @@ while ($row=pg_fetch_assoc($result)) {
     echo "<td>".$row['npsn']."</td>";
     echo "<td>".$row['nama_sekolah']."</td>";
     echo "<td>"."<a href='".$row['npsn']."'>Informasi</a>"."</td>";
-    echo "<td>"."<a href='".$row['npsn']."'>Edit</a>"."</td>";
+    echo "<td>"."<a href='edit_sekolah.php?npsn=".$row['npsn']."'>Edit</a>"."</td>";
     echo "<td>"."<a href='".$row['npsn']."'>Delete</a>"."</td>";
     
     echo "</tr>";
