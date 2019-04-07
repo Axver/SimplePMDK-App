@@ -10,7 +10,7 @@ session_start();
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Edit Sekolah</title>
+    <title>Informasi Sekolah</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
       <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
@@ -49,21 +49,31 @@ while ($row=pg_fetch_assoc($result)) {
 <div class='row' style='margin-top:100px;'>
 <div class='col-sm-4'></div>
 <div class='col-sm-4'>
-<h3 style='text-align:center;'>Edit Sekolah</h3>
+<h3 style='text-align:center;'>Informasi Sekolah</h3>
 
-<form action="../../controller/admin/edit_sekolah.php" method='POST'>
+<form  method='POST'>
 
-<input class='form-control' style='color:white;' type="hidden" name="npsn" id="" value='<?php echo $npsn; ?>'>
-Nama Sekolah:<input class='form-control' style='color:white;' type="text" name="nama_sekolah" id="" value='<?php echo $nama_sekolah; ?>'>
-Alamat Sekolah:<input class='form-control' style='color:white;' type="text" name="alamat_sekolah" id="" value='<?php echo $alamat_sekolah; ?>'>
-Username: <input class='form-control' style='color:white;' type="hidden" name="username" id="" value='<?php echo $username; ?>'>
-Password: <input class='form-control' style='color:white;' type="hidden" name="password" id="" value='<?php echo $password; ?>'>
-Kepala Sekolah :<input class='form-control' style='color:white;' type="text" name="kepala_sekolah" id="" value='<?php echo $kepala_sekolah; ?>'>
+<input class='form-control' style='color:white;' type="text" name="npsn" id="" value='<?php echo $npsn; ?>' disabled>
+Nama Sekolah:<input class='form-control' style='color:white;' type="text" name="nama_sekolah" id="" value='<?php echo $nama_sekolah; ?>' disabled>
+Alamat Sekolah:<input class='form-control' style='color:white;' type="text" name="alamat_sekolah" id="" value='<?php echo $alamat_sekolah; ?>' disabled>
+Username: <input class='form-control' style='color:white;' type="text" name="username" id="" value='<?php echo $username; ?>'disabled>
+Password: <input class='form-control' style='color:white;' type="text" name="password" id="" value='<?php echo $password; ?>'disabled>
+Kepala Sekolah :<input class='form-control' style='color:white;' type="text" name="kepala_sekolah" id="" value='<?php echo $kepala_sekolah; ?>'disabled>
 
-<input style='text-align:center;' type="submit" class='btn btn-normal' value='Edit'>
+
     
 
 </form>
+
+<?php
+$jumlah="SELECT COUNT(username) FROM public.user_pmdk WHERE created_by='$username' AND jenis_user='siswa';";
+$jumlah_=pg_query($conn,$jumlah);
+while ($row=pg_fetch_assoc($jumlah_)) {
+    $count=$row['count'];
+}
+?>
+
+Jumlah Siswa Terdaftar: <?php echo $count; ?>
 
 
 </div>
