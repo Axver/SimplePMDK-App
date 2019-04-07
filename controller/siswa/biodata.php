@@ -22,6 +22,8 @@ $prodi3=$_GET['prodi3'];
 $getdate=getdate();
 $tahun=$getdate['year'];
 
+
+
 $max=pg_query($conn,"SELECT MAX(no_pendaftaran)
 FROM public.biodata;");
 while ($row=pg_fetch_assoc($max)) {

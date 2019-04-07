@@ -495,7 +495,7 @@ function getProdi()
 
 function getProdi2()
 {
-  var politeknik=document.getElementById("politeknik").value;
+  var politeknik=document.getElementById("politeknik2").value;
  console.log(provinsi);
 
    $.ajax({
@@ -524,7 +524,7 @@ function getProdi2()
 
 function getProdi3()
 {
-  var politeknik=document.getElementById("politeknik").value;
+  var politeknik=document.getElementById("politeknik3").value;
  console.log(provinsi);
 
    $.ajax({

@@ -13,7 +13,7 @@ session_start();
   <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="./assets/img/favicon.png">
   <title>
-    Blk• Design System by Creative Tim
+    Sekolah Panel
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
@@ -33,6 +33,7 @@ session_start();
 
 include 'modal_informasi.php';
 include 'modal_tambahsiswa.php';
+include 'modal_tambahinfo.php';
 
 ?>
     
@@ -140,8 +141,8 @@ include 'modal_tambahsiswa.php';
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#">
-                          <p>Kelulusan</p>
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#modal_tambahinfo">
+                          <p>Tambah Informasi</p>
                         </a>
                       </li>
                     </ul>
@@ -170,7 +171,7 @@ include 'modal_tambahsiswa.php';
 
           <div class='col-sm-6'>
           <h3>Cari Username</h3>
-          <input type="text" id='cari_nama' name='cari_nama'>
+          <input class='form-control' type="text" id='cari_nama' name='cari_nama'>
           <input class='btn btn-normal' onclick='cari_nama()' type="submit" value='cari'>
           <p id='p'></p>
           </div>

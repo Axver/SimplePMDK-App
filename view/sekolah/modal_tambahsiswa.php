@@ -11,9 +11,9 @@
       
       <form action='../../controller/sekolah/tambah_user.php' method='POST'>
       <br>
-      Username: <input type="text" name='username'>
+      Username: <input class='form-control' type="text" name='username'>
       <br>
-      Password: <input type="password" name='password'>
+      Password: <input class='form-control' type="password" name='password'>
       <br>
 
       <input class='btn btn-info' type="submit" value='Tambah User'>
