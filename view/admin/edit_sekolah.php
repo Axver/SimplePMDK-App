@@ -34,6 +34,7 @@ FROM public.sekolah INNER JOIN user_pmdk ON sekolah.username=user_pmdk.username 
 $result=pg_query($conn,$sql);
 
 while ($row=pg_fetch_assoc($result)) {
+    $npsn=$row['npsn'];
     $nama_sekolah=$row['nama_sekolah'];
     $alamat_sekolah=$row['alamat_sekolah'];
     $kepala_sekolah=$row['kepala_sekolah'];
@@ -49,14 +50,21 @@ while ($row=pg_fetch_assoc($result)) {
 <div class='col-sm-4'></div>
 <div class='col-sm-4'>
 <h3 style='text-align:center;'>Edit Sekolah</h3>
-Nama Sekolah:<input class='form-control' style='color:white;' type="text" name="" id="" value='<?php echo $nama_sekolah; ?>'>
-Alamat Sekolah:<input class='form-control' style='color:white;' type="text" name="" id="" value='<?php echo $alamat_sekolah; ?>'>
-Username: <input class='form-control' style='color:white;' type="text" name="" id="" value='<?php echo $username; ?>'>
-Password: <input class='form-control' style='color:white;' type="text" name="" id="" value='<?php echo $password; ?>'>
-Kepala Sekolah :<input class='form-control' style='color:white;' type="text" name="" id="" value='<?php echo $kepala_sekolah; ?>'>
+
+<form action="../../controller/admin/edit_sekolah.php" method='POST'>
+
+<input class='form-control' style='color:white;' type="hidden" name="npsn" id="" value='<?php echo $npsn; ?>'>
+Nama Sekolah:<input class='form-control' style='color:white;' type="text" name="nama_sekolah" id="" value='<?php echo $nama_sekolah; ?>'>
+Alamat Sekolah:<input class='form-control' style='color:white;' type="text" name="alamat_sekolah" id="" value='<?php echo $alamat_sekolah; ?>'>
+Username: <input class='form-control' style='color:white;' type="text" name="username" id="" value='<?php echo $username; ?>'>
+Password: <input class='form-control' style='color:white;' type="text" name="password" id="" value='<?php echo $password; ?>'>
+Kepala Sekolah :<input class='form-control' style='color:white;' type="text" name="kepala_sekolah" id="" value='<?php echo $kepala_sekolah; ?>'>
 
 <input style='text-align:center;' type="submit" class='btn btn-normal' value='Edit'>
     
+
+</form>
+
 
 </div>
 <div class='col-sm-4'></div>
